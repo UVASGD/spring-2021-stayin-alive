@@ -194,6 +194,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderSize: {x: 1, y: 1}
   drawInteractionZone: 0
+  maxHealth: 100
+  hitPoints: 100
 --- !u!212 &91358317
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1225,10 +1227,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
-  damage: 0
-  bulletsPerSecond: 0
-  maxAmmo: 0
-  currentAmmo: 0
+  damage: 50
+  bulletsPerSecond: 1
+  reloadTime: 5
+  currentState: 0
+  maxAmmo: 5
+  currentAmmo: 5
+  totalAmmo: 30
 --- !u!4 &342697522
 Transform:
   m_ObjectHideFlags: 0
@@ -1448,6 +1453,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderSize: {x: 1, y: 1}
   drawInteractionZone: 0
+  maxHealth: 100
+  hitPoints: 100
 --- !u!212 &673106138
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1628,6 +1635,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   aim: {x: 0, y: 0}
   fire: 0
+  reload: 0
   playerController: {fileID: 907883064}
 --- !u!114 &907883064
 MonoBehaviour:
@@ -1643,6 +1651,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderSize: {x: 1, y: 1.8}
   drawInteractionZone: 0
+  maxHealth: 100
+  hitPoints: 100
   movementSpeed: 3
   mainWeapon: {fileID: 342697521}
   crosshairs: {fileID: 1231529479}
@@ -1820,6 +1830,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderSize: {x: 1, y: 1}
   drawInteractionZone: 0
+  maxHealth: 100
+  hitPoints: 100
 --- !u!212 &974286025
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1895,6 +1907,7 @@ GameObject:
   - component: {fileID: 1091848679}
   - component: {fileID: 1091848681}
   - component: {fileID: 1091848680}
+  - component: {fileID: 1091848682}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -17777,6 +17790,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1091848682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091848678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d942ecd72347342b6d5f1b02e09782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderSize: {x: 1, y: 1}
+  drawInteractionZone: 0
+  maxHealth: 100
+  hitPoints: 100
 --- !u!1 &1231529479
 GameObject:
   m_ObjectHideFlags: 0
@@ -17917,6 +17946,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderSize: {x: 1, y: 1}
   drawInteractionZone: 0
+  maxHealth: 100
+  hitPoints: 100
 --- !u!212 &1273489834
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18288,6 +18319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderSize: {x: 1, y: 1}
   drawInteractionZone: 0
+  maxHealth: 100
+  hitPoints: 100
 --- !u!212 &2021168832
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18450,6 +18483,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderSize: {x: 1, y: 1}
   drawInteractionZone: 0
+  maxHealth: 100
+  hitPoints: 100
 --- !u!61 &2091804133
 BoxCollider2D:
   m_ObjectHideFlags: 0
