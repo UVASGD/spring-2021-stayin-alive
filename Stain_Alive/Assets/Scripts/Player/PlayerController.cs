@@ -56,6 +56,7 @@ public class PlayerController : Destructible
         RaycastHit2D bullet = Physics2D.Raycast(transform.position, direction.normalized, mainWeapon.range);
 
 		if (bullet) {
+			gm.UpdateAmmo(-1);
 			Debug.Log(bullet.collider.gameObject.name);
 			Zombie zombie = bullet.collider.GetComponent<Zombie>();
 			if (zombie) {
@@ -69,7 +70,7 @@ public class PlayerController : Destructible
 		// modify gm.healthBar;
 	}
 
-	void OnCollisionEnter(Collision collision) {
+	void OnCollisionEnter2D(Collision2D collision) {
 		// PlayerData.health -= 10;
 		Debug.Log("Damged!");
 		TakeDamage();

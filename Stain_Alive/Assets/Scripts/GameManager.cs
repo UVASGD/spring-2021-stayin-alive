@@ -13,16 +13,16 @@ public class GameManager : MonoBehaviour
     public Button startButton;
     public TextMeshProUGUI gameoverText;
     public TextMeshProUGUI ammoText;
+    public TextMeshProUGUI levelText;
     public Slider healthBar;
-    private int ammo;
+    public Image pistol;
+    public int ammo;
 
     // Non UI Fields
     public bool isActive = false;
     public GameObject[] enemy;
-    // public GameObject spawnManager;
     public PlayerData playerData;
-    public float spawnDelay = 4;
-    public float spawnRate = 1000;
+    public float spawnDelay = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         startButton.gameObject.GetComponent<Button>();
         startButton.onClick.AddListener(StartGame);
         healthBar.gameObject.GetComponent<Slider>();
+        pistol.gameObject.GetComponent<Image>();
         playerData = GameObject.Find("Player").GetComponent<PlayerData>();
     }
 
@@ -40,9 +41,6 @@ public class GameManager : MonoBehaviour
         if (playerData.health == 0) {
             Gameover();
         }
-        if (isActive) {
-            StartCoroutine(Spawn());
-        }
     }
 
     // Start the game
@@ -51,6 +49,11 @@ public class GameManager : MonoBehaviour
         titleScreen.SetActive(false);
         ammoText.gameObject.SetActive(true);
         healthBar.gameObject.SetActive(true);
+        levelText.gameObject.SetActive(true);
+        pistol.gameObject.SetActive(true);
+        StartCoroutine(Spawn());
+        ammo = 100;
+        UpdateAmmo(0);
     }
 
     // Method for showing gameover UI
@@ -59,6 +62,8 @@ public class GameManager : MonoBehaviour
         restartButton.gameObject.SetActive(true);
         gameoverText.gameObject.SetActive(true);
         ammoText.gameObject.SetActive(false);
+        levelText.gameObject.SetActive(false);
+        pistol.gameObject.SetActive(false);
     }
 
     // Restarts the game
@@ -68,12 +73,13 @@ public class GameManager : MonoBehaviour
 
     // Spawn Enemies
     IEnumerator Spawn() {
-        
-        yield return new WaitForSeconds(spawnDelay);
-        SpawnWave();
+        while (isActive) {
+            yield return new WaitForSeconds(spawnDelay);
+            SpawnWave();
+        }
     }
 
-    private void SpawnWave() {
+    public void SpawnWave() {
         int index = Random.Range(0, enemy.Length);
         Instantiate(enemy[index], GenerateSpawnPos(), enemy[index].transform.rotation);
     }
@@ -83,5 +89,10 @@ public class GameManager : MonoBehaviour
         float spawnPosY = Random.Range(-7, 30);
         Vector3 randomPos = new Vector3(spawnPosX, spawnPosY, 0);
         return randomPos;
+    }
+
+    public void UpdateAmmo(int ammoToAdd) {
+        ammo += ammoToAdd;
+        ammoText.text = "Ammo: " + ammo;
     }
 }

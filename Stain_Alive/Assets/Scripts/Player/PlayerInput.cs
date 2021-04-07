@@ -29,7 +29,6 @@ public class PlayerInput : MonoBehaviour
             movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             fire = Input.GetMouseButton(0);
-        
             playerController.ProcessInput(movement, aim, fire);
         }
     }
