@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     public float damage;
     public float bulletsPerSecond;
     public float reloadTime;
+    public bool fireInput;
     
     public enum WeaponStates
     {
@@ -21,14 +22,17 @@ public class Weapon : MonoBehaviour
     public int currentAmmo; // In magazine
     public int totalAmmo; //on player (not in magazine)
 
-    public virtual void Fire(Vector2 start, Vector2 direction)
+
+    //TODO: change from timers/delays to a timestamp wherein it will adjust. 
+
+    public virtual void Fire(Vector2 start, Vector2 aim) 
     {
         if (currentState != WeaponStates.Ready || currentAmmo <= 0)
         {
             return;
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(start, direction.normalized, range);
+        RaycastHit2D hit = Physics2D.Raycast(start, aim.normalized, range);
 
         if (hit)
         {
@@ -45,7 +49,7 @@ public class Weapon : MonoBehaviour
  
     public virtual void Reload()
     {
-        if (currentState == WeaponStates.Reloading)
+        if (currentState != WeaponStates.Ready)
         {
             return;
         }

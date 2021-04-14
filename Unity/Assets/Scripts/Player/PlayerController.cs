@@ -25,22 +25,30 @@ public class PlayerController : Destructible
 		} else {
 			crosshairs.transform.position = (Vector2) transform.position + (aim.normalized * mainWeapon.range);
 		}
-		
+
 		// fire weapon
+		mainWeapon.fireInput = fire;
 		if (fire) {
-			if(aim.x >= 0) {
-				spriteRenderer.sprite = right;
+			spriteRenderer.sprite = right;
+			if (aim.x >= 0) {
 				spriteRenderer.flipX = false;
 			} else {
-				spriteRenderer.sprite = right;
 				spriteRenderer.flipX = true;
 			}
-            Fire(aim);
-		} 
-		
-		else {
+
+			mainWeapon.Fire(transform.position, aim);
+		}
+		else
+		{
 			spriteRenderer.sprite = forward;
 		}
+
+		if (reload)
+        {
+			mainWeapon.Reload();
+        }
+
+		
 	}
 
     public void Fire(Vector2 direction) {
