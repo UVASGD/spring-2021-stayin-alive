@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/GrassLvl1.unity
+    guid: 3a236e25256836d4093d81d733a2dca2
+  - enabled: 1
+    path: Assets/Scenes/GrassLvl2.unity
+    guid: 2e76886b5292cb54c8c44364f29fb633
+  - enabled: 1
+    path: Assets/Scenes/GrassLvl3.unity
+    guid: 86b39bc08272feb4e8119ee23b599203
+  - enabled: 1
+    path: Assets/Scenes/DemoVictory.unity
+    guid: 2d00549d67671204f9e6228f2ead403d
   m_configObjects: {}

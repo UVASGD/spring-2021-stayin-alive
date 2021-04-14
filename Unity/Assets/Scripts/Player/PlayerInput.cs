@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
     public Vector2 movement;
     public Vector2 aim;
     public bool fire;
-    public bool reload;
+
     public PlayerController playerController;
 
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class PlayerInput : MonoBehaviour
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         fire = Input.GetMouseButton(0);
-        reload = Input.GetKeyDown("r");
-        playerController.ProcessInput(movement, aim, fire, reload);
+        
+        playerController.ProcessInput(movement, aim, fire);
     }
 }
