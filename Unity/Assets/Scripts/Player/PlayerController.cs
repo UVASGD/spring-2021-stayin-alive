@@ -7,10 +7,19 @@ public class PlayerController : Destructible
     public float movementSpeed = 1f;
     public Weapon mainWeapon;
 	public GameObject crosshairs;
+	public GameObject enemy;
+	public PlayerData playerData;
 
 	// Temporary, needs work
 	public Sprite forward;
+	public GameManager gm;
 	public Sprite right;
+
+	void Start(){
+		// enemy = gameObject.Find("Enemy").GetComponent<Enemy>();
+		playerData = GameObject.Find("Player").GetComponent<PlayerData>();
+		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+	}
 
 	public SpriteRenderer spriteRenderer;
 
@@ -47,6 +56,7 @@ public class PlayerController : Destructible
         RaycastHit2D bullet = Physics2D.Raycast(transform.position, direction.normalized, mainWeapon.range);
 
 		if (bullet) {
+			gm.UpdateAmmo(-1);
 			Debug.Log(bullet.collider.gameObject.name);
 			Zombie zombie = bullet.collider.GetComponent<Zombie>();
 			if (zombie) {
@@ -56,7 +66,14 @@ public class PlayerController : Destructible
 	}
 
 	public override void TakeDamage() {
-		throw new System.NotImplementedException();
+		playerData.health -= 10;
+		// modify gm.healthBar;
+	}
+
+	void OnCollisionEnter2D(Collision2D collision) {
+		// PlayerData.health -= 10;
+		Debug.Log("Damged!");
+		TakeDamage();
 	}
 
 	public override void Heal() {
