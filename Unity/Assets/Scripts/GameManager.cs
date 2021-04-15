@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public bool isActive = false;
     public GameObject[] enemy;
     public PlayerData playerData;
-    public float spawnDelay = 1;
+    public float spawnDelay = 0.05f;
 
     // Start is called before the first frame update
     void Start()
