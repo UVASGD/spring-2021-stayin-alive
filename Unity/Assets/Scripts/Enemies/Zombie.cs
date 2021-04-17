@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Zombie : Destructible
 {
-	public override void Heal() {
-		throw new System.NotImplementedException();
+	void Start()
+	{
+		hitPoints = 100;
+		maxHealth = 100;
 	}
 
-	public override void TakeDamage() {
-		Die();
-	}
-
-	public override void Die() {
+	public override void Die() 
+	{
 		Destroy(gameObject);
 	}
 }

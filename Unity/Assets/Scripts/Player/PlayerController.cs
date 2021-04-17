@@ -14,7 +14,7 @@ public class PlayerController : Destructible
 
 	public SpriteRenderer spriteRenderer;
 
-	public void ProcessInput(Vector2 movement, Vector2 aim, bool fire) {
+	public void ProcessInput(Vector2 movement, Vector2 aim, bool fire, bool reload) {
         transform.Translate(movement * movementSpeed * Time.deltaTime); // moves character in specified directions
 
 		Debug.DrawRay(transform.position, aim.normalized * mainWeapon.range, Color.red);
@@ -35,7 +35,6 @@ public class PlayerController : Destructible
 			} else {
 				spriteRenderer.flipX = true;
 			}
-
 			mainWeapon.Fire(transform.position, aim);
 		}
 		else
@@ -47,29 +46,10 @@ public class PlayerController : Destructible
         {
 			mainWeapon.Reload();
         }
-
 		
-
 	}
 
-    public void Fire(Vector2 direction) {
-        RaycastHit2D bullet = Physics2D.Raycast(transform.position, direction.normalized, mainWeapon.range);
-
-		if (bullet) {
-			Debug.Log(bullet.collider.gameObject.name);
-			Zombie zombie = bullet.collider.GetComponent<Zombie>();
-			if (zombie) {
-				zombie.TakeDamage();
-			}
-		}
-
-	}
-
-	public override void TakeDamage() {
-		throw new System.NotImplementedException();
-	}
-
-	public override void Heal() {
+	public override void Die() {
 		throw new System.NotImplementedException();
 	}
 }
