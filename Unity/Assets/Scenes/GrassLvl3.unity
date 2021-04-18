@@ -451,6 +451,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   aim: {x: 0, y: 0}
   fire: 0
+  reload: 0
   playerController: {fileID: 950597006}
 --- !u!114 &950597006
 MonoBehaviour:
@@ -466,6 +467,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderSize: {x: 1, y: 1.8}
   drawInteractionZone: 0
+  maxHealth: 0
+  hitPoints: 0
   movementSpeed: 3
   mainWeapon: {fileID: 1182391128}
   crosshairs: {fileID: 242181086}
@@ -6208,7 +6211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1152633003}
   - component: {fileID: 1152633002}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CameraBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6287,8 +6290,12 @@ MonoBehaviour:
   range: 2
   damage: 0
   bulletsPerSecond: 0
+  reloadTime: 0
+  fireInput: 0
+  currentState: 0
   maxAmmo: 0
   currentAmmo: 0
+  totalAmmo: 0
 --- !u!4 &1182391129
 Transform:
   m_ObjectHideFlags: 0
