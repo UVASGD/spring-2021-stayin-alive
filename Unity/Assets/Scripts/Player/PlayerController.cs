@@ -7,10 +7,21 @@ public class PlayerController : Destructible
     public float movementSpeed = 1f;
     public Weapon mainWeapon;
 	public GameObject crosshairs;
+	// public GameObject enemy;
+	// public PlayerData playerData;
 
 	// Temporary, needs work
 	public Sprite forward;
+	public GameManager gm;
 	public Sprite right;
+	public bool reload = false;
+	public float damage = 10f;
+
+	void Start(){
+		// enemy = gameObject.Find("Enemy").GetComponent<Enemy>();
+		// playerData = GameObject.Find("Player").GetComponent<PlayerData>();
+		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+	}
 
 	public SpriteRenderer spriteRenderer;
 
