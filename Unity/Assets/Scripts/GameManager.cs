@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     // Non UI Fields
     public bool isActive = false;
     public GameObject[] enemy;
-    public PlayerData playerData;
+    // public PlayerData playerData;
     public float spawnDelay = 0.05f;
 
     // Start is called before the first frame update
@@ -35,15 +35,15 @@ public class GameManager : MonoBehaviour
         startButton.onClick.AddListener(ChooseCharacter);
         healthBar.gameObject.GetComponent<Slider>();
         pistol.gameObject.GetComponent<Image>();
-        playerData = GameObject.Find("Player").GetComponent<PlayerData>();
+        // playerData = GameObject.Find("Player").GetComponent<PlayerData>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerData.health == 0) {
-            Gameover();
-        }
+        // if (playerData.health == 0) {
+        //     Gameover();
+        // }
     }
 
     public void ChooseCharacter() {

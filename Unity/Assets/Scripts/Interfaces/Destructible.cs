@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Destructible : Interactable {
 
-    public virtual void TakeDamage() {}
+    public virtual void TakeDamage(float damage) {}
 
     public virtual void Die() {}
 

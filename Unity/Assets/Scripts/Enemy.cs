@@ -17,7 +17,7 @@ public class Enemy : Destructible
     // Update is called once per frame
     void Update()
     {
-        Vector2 lookDirection = player.transform.position - transform.position;
+        // Vector2 lookDirection = player.transform.position - transform.position;
         // enemyRb.AddForce(lookDirection * speed, ForceMode2D.Impulse);
         // enemyRb.MovePosition(player.transform.position);
     }

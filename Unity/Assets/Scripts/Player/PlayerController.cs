@@ -7,17 +7,19 @@ public class PlayerController : Destructible
     public float movementSpeed = 1f;
     public Weapon mainWeapon;
 	public GameObject crosshairs;
-	public GameObject enemy;
-	public PlayerData playerData;
+	// public GameObject enemy;
+	// public PlayerData playerData;
 
 	// Temporary, needs work
 	public Sprite forward;
 	public GameManager gm;
 	public Sprite right;
+	public bool reload = false;
+	public float damage = 10f;
 
 	void Start(){
 		// enemy = gameObject.Find("Enemy").GetComponent<Enemy>();
-		playerData = GameObject.Find("Player").GetComponent<PlayerData>();
+		// playerData = GameObject.Find("Player").GetComponent<PlayerData>();
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 
@@ -34,22 +36,30 @@ public class PlayerController : Destructible
 		} else {
 			crosshairs.transform.position = (Vector2) transform.position + (aim.normalized * mainWeapon.range);
 		}
-		
+
 		// fire weapon
+		mainWeapon.fireInput = fire;
 		if (fire) {
-			if(aim.x >= 0) {
-				spriteRenderer.sprite = right;
+			spriteRenderer.sprite = right;
+			if (aim.x >= 0) {
 				spriteRenderer.flipX = false;
 			} else {
-				spriteRenderer.sprite = right;
 				spriteRenderer.flipX = true;
 			}
-            Fire(aim);
-		} 
-		
-		else {
+
+			mainWeapon.Fire(transform.position, aim);
+		}
+		else
+		{
 			spriteRenderer.sprite = forward;
 		}
+
+		if (reload)
+        {
+			mainWeapon.Reload();
+        }
+
+		
 	}
 
     public void Fire(Vector2 direction) {
@@ -60,20 +70,20 @@ public class PlayerController : Destructible
 			Debug.Log(bullet.collider.gameObject.name);
 			Zombie zombie = bullet.collider.GetComponent<Zombie>();
 			if (zombie) {
-				zombie.TakeDamage();
+				zombie.TakeDamage(damage);
 			}
 		}
 	}
 
-	public override void TakeDamage() {
-		playerData.health -= 10;
-		// modify gm.healthBar;
-	}
+	// public override void TakeDamage(float damage) {
+	// 	playerData.health -= damage;
+	// 	// modify gm.healthBar;
+	// }
 
 	void OnCollisionEnter2D(Collision2D collision) {
 		// PlayerData.health -= 10;
 		Debug.Log("Damged!");
-		TakeDamage();
+		TakeDamage(damage);
 	}
 
 	public override void Heal() {

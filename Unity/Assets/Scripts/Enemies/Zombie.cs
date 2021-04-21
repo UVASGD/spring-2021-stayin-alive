@@ -8,7 +8,7 @@ public class Zombie : Destructible
 		throw new System.NotImplementedException();
 	}
 
-	public override void TakeDamage() {
+	public override void TakeDamage(float damage) {
 		Die();
 	}
 
