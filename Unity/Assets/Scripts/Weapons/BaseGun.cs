@@ -13,6 +13,7 @@ public class BaseGun : Weapon
         maxAmmo = 5;
         currentAmmo = 5;
         totalAmmo = 30;
+        gm.UpdateAmmo(currentAmmo);
     }
 
 }
