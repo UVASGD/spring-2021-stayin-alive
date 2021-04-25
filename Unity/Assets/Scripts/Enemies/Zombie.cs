@@ -10,8 +10,4 @@ public class Zombie : Destructible
 		maxHealth = 100;
 	}
 
-	public override void Die() 
-	{
-		Destroy(gameObject);
-	}
 }
