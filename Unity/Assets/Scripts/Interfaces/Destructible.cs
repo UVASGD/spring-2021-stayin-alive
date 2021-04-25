@@ -24,7 +24,9 @@ public class Destructible : Interactable
         }
     }
 
-    public virtual void Die() {}
+    public virtual void Die() {
+		Destroy(gameObject);
+    }
 
     //Heal() with no parameters heals to full
     public virtual void Heal()
