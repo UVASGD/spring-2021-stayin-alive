@@ -23,10 +23,12 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
         maxAmmo = 3;
         currentAmmo = 3;
         totalAmmo = 30;
+        bulletsPerSecond = 1;
         rangeIncrease = .01f;     //From here...
         damageIncrease = .2f;
         maxDamage = 100;
         maxRange = 8;             //...To here, make sure "increase" vars divide "max" vars evenly
+        gm.UpdateAmmo(currentAmmo);
     }
 
     // Update is called once per frame
@@ -56,13 +58,10 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
                     }
                 }
                 currentAmmo -= 1;
+                gm.UpdateAmmo(currentAmmo);
                 damage = startingDamage;
                 range = startingRange;
-                currentState = WeaponStates.Ready;
-                if (currentAmmo <= 0)
-                {
-                    Reload();
-                }
+                StartCoroutine(BulletDelay());
             }
         }
     }
@@ -78,6 +77,18 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
             return;
         }
         currentState = WeaponStates.Firing;
+    }
+
+    public override IEnumerator BulletDelay()
+    {
+        currentState = WeaponStates.Reloading;
+        yield return new WaitForSeconds(1 / bulletsPerSecond);
+        currentState = WeaponStates.Ready;
+        if (currentAmmo <= 0)
+        {
+            Reload();
+        }
+
     }
 
 }

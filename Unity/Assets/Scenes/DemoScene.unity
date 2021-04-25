@@ -1373,7 +1373,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342697522}
-  - component: {fileID: 342697521}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -1381,27 +1380,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &342697521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342697520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97dd344f02535234cb471b83163c3000, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 2
-  damage: 50
-  bulletsPerSecond: 1
-  reloadTime: 5
-  fireInput: 0
-  currentState: 0
-  maxAmmo: 5
-  currentAmmo: 5
-  totalAmmo: 30
 --- !u!4 &342697522
 Transform:
   m_ObjectHideFlags: 0
@@ -1836,13 +1814,14 @@ MonoBehaviour:
   maxHealth: 100
   hitPoints: 100
   movementSpeed: 3
-  mainWeapon: {fileID: 342697521}
+  mainWeapon: {fileID: 0}
   crosshairs: {fileID: 1231529479}
   forward: {fileID: 21300000, guid: e52da134d0494bc48b13e7fe14734f4c, type: 3}
   gm: {fileID: 0}
   right: {fileID: 21300000, guid: 2861c9d6cae01604cb0bece8acccad3d, type: 3}
   reload: 0
   damage: 10
+  character: 0
   spriteRenderer: {fileID: 907883065}
 --- !u!212 &907883065
 SpriteRenderer:
@@ -19196,6 +19175,11 @@ PrefabInstance:
       propertyPath: pistol
       value: 
       objectReference: {fileID: 1968083779}
+    - target: {fileID: 4694209577038696608, guid: 4c117be0a80fe17489f414b98cb45937,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 907883064}
     - target: {fileID: 4694209577038696608, guid: 4c117be0a80fe17489f414b98cb45937,
         type: 3}
       propertyPath: ammoText

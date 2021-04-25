@@ -21,9 +21,16 @@ public class Weapon : MonoBehaviour
     public int maxAmmo; // In magazine
     public int currentAmmo; // In magazine
     public int totalAmmo; //on player (not in magazine)
+    public GameManager gm;
 
 
-    //TODO: change from timers/delays to a timestamp wherein it will adjust. 
+    void Awake(){
+        //for some reason I (maybe) can't assign gm here but it gets assigned when PlayerController creates the weapon
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //NOTE: include gm.UpdateAmmo(currentAmmo); at the end of each weaponType's start function since its wonky being here
+    }
+
+    //TODO: change from timers/delays to a timestamp wherein it will adjust.
 
     public virtual void Fire(Vector2 start, Vector2 aim) 
     {
@@ -43,21 +50,14 @@ public class Weapon : MonoBehaviour
             }
         }
         currentAmmo -= 1;
+        gm.UpdateAmmo(currentAmmo);
         StartCoroutine(BulletDelay()); //time delays require a seperate code block, which is below
 
     }
  
     public virtual void Reload()
     {
-        if (currentState != WeaponStates.Ready)
-        {
-            return;
-        }
-
-        if (currentAmmo < maxAmmo && totalAmmo > 0)
-        {
-            StartCoroutine(ReloadTimings()); //time delays require a seperate code block, which is below
-        }
+        StartCoroutine(ReloadTimings());
     }
 
     public virtual IEnumerator BulletDelay()
@@ -74,16 +74,25 @@ public class Weapon : MonoBehaviour
 
     public virtual IEnumerator ReloadTimings()
     {
-        currentState = WeaponStates.Reloading;
-        yield return new WaitForSeconds(reloadTime);
-        totalAmmo -= maxAmmo - currentAmmo;
-        currentAmmo = maxAmmo;
-        if (totalAmmo < 0)
+        yield return new WaitUntil(() => currentState == WeaponStates.Ready);
+    
+        if (currentAmmo < maxAmmo && totalAmmo > 0)
         {
-            currentAmmo += totalAmmo;
-            totalAmmo = 0;
+            currentState = WeaponStates.Reloading;
+            gm.UpdateAmmo(-1);
+
+            yield return new WaitForSeconds(reloadTime);
+
+            totalAmmo -= maxAmmo - currentAmmo;
+            currentAmmo = maxAmmo;
+            if (totalAmmo < 0)
+            {
+                currentAmmo += totalAmmo;
+                totalAmmo = 0;
+            }
+            currentState = WeaponStates.Ready;
+            gm.UpdateAmmo(currentAmmo);
         }
-       currentState = WeaponStates.Ready;
     }
     
 }

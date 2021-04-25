@@ -16,11 +16,35 @@ public class PlayerController : Destructible
 	public Sprite right;
 	public bool reload = false;
 	public float damage = 10f;
+	public enum Characters
+    {
+		Hunter,
+        Archer,
+    }
+	public Characters character;
 
 	void Start(){
 		// enemy = gameObject.Find("Enemy").GetComponent<Enemy>();
 		// playerData = GameObject.Find("Player").GetComponent<PlayerData>();
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+	}
+
+	public void SetChar(int charNum){
+		if (charNum == 1){
+			mainWeapon = GameObject.Find("Weapon").AddComponent<BaseGun>();
+			//mainWeapon.gm = gm;
+			character = Characters.Hunter;
+			
+		}
+		if (charNum == 2){
+			mainWeapon = GameObject.Find("Weapon").AddComponent<Bow>();
+			//mainWeapon.gm = gm;
+			character = Characters.Archer;
+		}
+	}
+
+	void Update(){
+
 	}
 
 	public SpriteRenderer spriteRenderer;

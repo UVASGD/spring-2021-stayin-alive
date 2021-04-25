@@ -19,13 +19,13 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI levelText;
     public Slider healthBar;
     public Image pistol;
-    public int ammo;
 
     // Non UI Fields
     public bool isActive = false;
     public GameObject[] enemy;
     // public PlayerData playerData;
     public float spawnDelay = 0.05f;
+    public PlayerController player;
 
     // Start is called before the first frame update
     void Start()
@@ -51,8 +51,18 @@ public class GameManager : MonoBehaviour
         playerSelect.SetActive(true);
         char1.gameObject.GetComponent<Button>();
         char2.gameObject.GetComponent<Button>();
-        char1.onClick.AddListener(StartGame);
-        char2.onClick.AddListener(StartGame);
+        char1.onClick.AddListener(Char1Selected);
+        char2.onClick.AddListener(Char2Selected);
+    }
+
+    public void Char1Selected() {
+        StartGame();
+        player.SetChar(1);
+    }
+
+    public void Char2Selected() {
+        StartGame();
+        player.SetChar(2);
     }
 
     // Start the game
@@ -64,8 +74,6 @@ public class GameManager : MonoBehaviour
         levelText.gameObject.SetActive(true);
         pistol.gameObject.SetActive(true);
         StartCoroutine(Spawn());
-        ammo = 100;
-        UpdateAmmo(0);
     }
 
     // Method for showing gameover UI
@@ -103,8 +111,11 @@ public class GameManager : MonoBehaviour
         return randomPos;
     }
 
-    public void UpdateAmmo(int ammoToAdd) {
-        ammo += ammoToAdd;
+    public void UpdateAmmo(int ammo) {
+        if (ammo == -1){
+            ammoText.text = "Reloading...";
+            return;
+        }
         ammoText.text = "Ammo: " + ammo;
     }
 }
