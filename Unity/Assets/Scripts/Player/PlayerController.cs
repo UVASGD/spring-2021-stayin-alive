@@ -61,9 +61,10 @@ public class PlayerController : Destructible
 			crosshairs.transform.position = (Vector2) transform.position + (aim.normalized * mainWeapon.range);
 		}
 
-		// fire weapon
+		// Weapon control
 		mainWeapon.fireInput = fire;
-		if (fire) {
+
+		if (fire && mainWeapon.currentState != Weapon.WeaponStates.Reloading) { 
 			spriteRenderer.sprite = right;
 			if (aim.x >= 0) {
 				spriteRenderer.flipX = false;

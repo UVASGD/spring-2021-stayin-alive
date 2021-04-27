@@ -13,6 +13,7 @@ public class BaseGun : Weapon
         maxAmmo = 5;
         currentAmmo = 5;
         totalAmmo = 30;
+        projectileSpeed = 10f;
         gm.UpdateAmmo(currentAmmo);
     }
 

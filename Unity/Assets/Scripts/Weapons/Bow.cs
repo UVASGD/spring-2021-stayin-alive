@@ -15,6 +15,8 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
     const float startingRange = 1;
     const float startingDamage = 10;
 
+
+
     void Start()
     {
         range = startingRange;
@@ -24,8 +26,9 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
         currentAmmo = 3;
         totalAmmo = 30;
         bulletsPerSecond = 1;
-        rangeIncrease = .01f;     //From here...
-        damageIncrease = .2f;
+        projectileSpeed = 15;
+        rangeIncrease = 2f;     //From here...
+        damageIncrease = 25f;
         maxDamage = 100;
         maxRange = 8;             //...To here, make sure "increase" vars divide "max" vars evenly
         gm.UpdateAmmo(currentAmmo);
@@ -39,11 +42,11 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
         {
             if (range < maxRange)
             {
-                range += rangeIncrease;
+                range += rangeIncrease * Time.deltaTime;
             }
             if (damage < maxDamage)
             {
-                damage += damageIncrease;
+                damage += damageIncrease * Time.deltaTime;
             }
             if (!fireInput)
             {
@@ -58,7 +61,23 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
                     }
                 }
                 currentAmmo -= 1;
+                source[2].Stop();
+                source[3].Play();
                 gm.UpdateAmmo(currentAmmo);
+                //create bullet
+                GameObject a = Instantiate(bulletPrefab) as GameObject;
+                a.transform.position = start;
+                a.GetComponent<Rigidbody2D>().velocity = aim.normalized * projectileSpeed;
+
+                if (hit){
+                    a.GetComponent<Bullet>().range = hit.distance; 
+                }
+                else{
+                    a.GetComponent<Bullet>().range = range; 
+                }
+
+                a.GetComponent<Bullet>().start = start;
+                //reset
                 damage = startingDamage;
                 range = startingRange;
                 StartCoroutine(BulletDelay());
@@ -76,6 +95,7 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
         {
             return;
         }
+        source[2].Play();
         currentState = WeaponStates.Firing;
     }
 
