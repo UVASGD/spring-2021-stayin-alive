@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // SpawnWave();
         startButton.gameObject.GetComponent<Button>();
         startButton.onClick.AddListener(ChooseCharacter);
         healthBar.gameObject.GetComponent<Slider>();
@@ -57,12 +56,12 @@ public class GameManager : MonoBehaviour
 
     public void Char1Selected() {
         StartGame();
-        player.SetChar(1);
+        // player.SetChar(1);
     }
 
     public void Char2Selected() {
         StartGame();
-        player.SetChar(2);
+        // player.SetChar(2);
     }
 
     // Start the game
