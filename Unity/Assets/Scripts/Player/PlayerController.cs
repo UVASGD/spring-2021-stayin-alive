@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : Destructible
 {
-    public float movementSpeed = 1f;
+    public float movementSpeed = 5f;
     public Weapon mainWeapon;
 	public GameObject crosshairs;
 	// public GameObject enemy;
