@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateLevel();
         // if (playerData.health == 0) {
         //     Gameover();
         // }
@@ -56,12 +57,12 @@ public class GameManager : MonoBehaviour
 
     public void Char1Selected() {
         StartGame();
-        // player.SetChar(1);
+        player.SetChar(1);
     }
 
     public void Char2Selected() {
         StartGame();
-        // player.SetChar(2);
+        player.SetChar(2);
     }
 
     // Start the game
@@ -116,5 +117,15 @@ public class GameManager : MonoBehaviour
             return;
         }
         ammoText.text = "Ammo: " + ammo;
+    }
+
+    public void UpdateLevel() {
+        if (this.CompareTag("lv1")) {
+            levelText.text = "Level 1: The Labyrinth";
+            return;
+        }
+        if (this.CompareTag("lv2")) {
+            levelText.text = "Level 2: Misty Swamp";
+        }
     }
 }
