@@ -7,9 +7,6 @@ public class SafeHouse : MonoBehaviour
 {
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.CompareTag("Player")) {
-			// if (this.CompareTag("1 to 2")) {
-			// 	SceneManager.LoadScene("GrassLvl2");
-			// }
 			if (this.CompareTag("2 to 3")) {
 				SceneManager.LoadScene("GrassLvl3");
 			}

@@ -2210,7 +2210,7 @@ MonoBehaviour:
   aim: {x: 0, y: 0}
   fire: 0
   reload: 0
-  gm: {fileID: 0}
+  gm: {fileID: 615505423}
   playerController: {fileID: 907883064}
 --- !u!114 &907883064
 MonoBehaviour:

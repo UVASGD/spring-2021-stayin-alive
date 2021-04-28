@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateLevel();
         // if (playerData.health == 0) {
         //     Gameover();
         // }
@@ -116,5 +117,15 @@ public class GameManager : MonoBehaviour
             return;
         }
         ammoText.text = "Ammo: " + ammo;
+    }
+
+    public void UpdateLevel() {
+        if (this.CompareTag("lv1")) {
+            levelText.text = "Level 1: The Labyrinth";
+            return;
+        }
+        if (this.CompareTag("lv2")) {
+            levelText.text = "Level 2: Misty Swamp";
+        }
     }
 }
