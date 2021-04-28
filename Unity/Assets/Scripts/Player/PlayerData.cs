@@ -10,15 +10,15 @@ public class PlayerData : MonoBehaviour {
     public float maxHealth;
     public int reserveAmmo;
 
-    private void Awake() {
-        if (singleton == null) {
-            singleton = this;
-        } else {
-            Destroy(gameObject);
-        }
+    // private void Awake() {
+    //     if (singleton == null) {
+    //         singleton = this;
+    //     } else {
+    //         Destroy(gameObject);
+    //     }
 
-        DontDestroyOnLoad(gameObject);
-    }
+    //     DontDestroyOnLoad(gameObject);
+    // }
 
     // Initialize fields here
     void Start() {

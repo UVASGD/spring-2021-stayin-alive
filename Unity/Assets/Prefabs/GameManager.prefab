@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4694209577038696609
+--- !u!1 &5600034599874773774
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4694209577038696615}
-  - component: {fileID: 4694209577038696608}
+  - component: {fileID: 5600034599874773773}
+  - component: {fileID: 5600034599745722160}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: lv1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4694209577038696615
+--- !u!4 &5600034599874773773
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4694209577038696609}
+  m_GameObject: {fileID: 5600034599874773774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4694209577038696608
+--- !u!114 &5600034599745722160
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4694209577038696609}
+  m_GameObject: {fileID: 5600034599874773774}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c2760c5fcc9baf4e8550c367e80adbc, type: 3}
@@ -54,10 +54,9 @@ MonoBehaviour:
   levelText: {fileID: 0}
   healthBar: {fileID: 0}
   pistol: {fileID: 0}
-  ammo: 0
   isActive: 0
   enemy:
   - {fileID: 2488792029829016820, guid: f95bfed1ce3a45340b38c996191ca083, type: 3}
   - {fileID: 1429660541355811961, guid: 92bfddf5e8f4ff0428c3a8c831762ca6, type: 3}
-  playerData: {fileID: 0}
   spawnDelay: 4
+  player: {fileID: 0}
