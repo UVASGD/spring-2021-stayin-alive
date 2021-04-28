@@ -224,7 +224,7 @@ MonoBehaviour:
   maxHealth: 0
   hitPoints: 0
   movementSpeed: 5
-  mainWeapon: {fileID: 92009595}
+  mainWeapon: {fileID: 0}
   crosshairs: {fileID: 2110843160}
   forward: {fileID: 21300000, guid: e52da134d0494bc48b13e7fe14734f4c, type: 3}
   gm: {fileID: 400866559}
@@ -337,19 +337,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 92009594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97dd344f02535234cb471b83163c3000, type: 3}
+  m_Script: {fileID: 11500000, guid: 703302639e7561d44ba0be7748f66a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0
-  damage: 0
-  bulletsPerSecond: 0
-  reloadTime: 0
-  fireInput: 0
-  currentState: 0
-  maxAmmo: 0
-  currentAmmo: 0
-  totalAmmo: 0
-  gm: {fileID: 400866559}
+  bulletPrefab: {fileID: 8240696494704966152, guid: f88d74e46023c034ea07ce1469c24759,
+    type: 3}
 --- !u!4 &92009596
 Transform:
   m_ObjectHideFlags: 0
