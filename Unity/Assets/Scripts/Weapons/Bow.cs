@@ -27,8 +27,8 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
         totalAmmo = 30;
         bulletsPerSecond = 1;
         projectileSpeed = 15;
-        rangeIncrease = 2f;     //From here...
-        damageIncrease = 25f;
+        rangeIncrease = 2.67f;     //From here...
+        damageIncrease = 33.4f;
         maxDamage = 100;
         maxRange = 8;             //...To here, make sure "increase" vars divide "max" vars evenly
         gm.UpdateAmmo(currentAmmo);
