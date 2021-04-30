@@ -6,7 +6,7 @@ public class BaseGun : Weapon
 {
     public void Start()
     {
-        range = 2;
+        range = 4;
         damage = 50;
         bulletsPerSecond = 1;
         reloadTime = 3;

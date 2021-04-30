@@ -7,6 +7,7 @@ public class Enemy : Destructible
     public float speed = .1f;
     public float aggroRange = 5f;
     public float meleeRange = 1.5f;
+    public float closeRange = .5f;
 
     public float damage;
     public float swingTimer;
@@ -55,10 +56,11 @@ public class Enemy : Destructible
     private void MoveTowards(GameObject target){
         Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y);
         Vector2 targetPosition = new Vector2(target.transform.position.x, target.transform.position.y);
-        if (Vector2.Distance(currentPosition, targetPosition) > meleeRange){
+        if (Vector2.Distance(currentPosition, targetPosition) > closeRange){
             Vector2 moveDir = (targetPosition - currentPosition).normalized;
             transform.position = new Vector3(currentPosition.x + moveDir.x * speed * Time.deltaTime, currentPosition.y + moveDir.y * speed * Time.deltaTime, 0);
-        } else{
+        } 
+        if (Vector2.Distance(currentPosition, targetPosition) <= meleeRange) {
             Attack(target.GetComponent<Destructible>());
         }
     }
