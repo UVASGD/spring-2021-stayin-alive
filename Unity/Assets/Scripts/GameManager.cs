@@ -34,16 +34,12 @@ public class GameManager : MonoBehaviour
         startButton.onClick.AddListener(ChooseCharacter);
         healthBar.gameObject.GetComponent<Slider>();
         pistol.gameObject.GetComponent<Image>();
-        // playerData = GameObject.Find("Player").GetComponent<PlayerData>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateLevel();
-        // if (playerData.health == 0) {
-        //     Gameover();
-        // }
+        // UpdateLevel();
     }
 
     public void ChooseCharacter() {
@@ -119,13 +115,18 @@ public class GameManager : MonoBehaviour
         ammoText.text = "Ammo: " + ammo;
     }
 
-    public void UpdateLevel() {
-        if (this.CompareTag("lv1")) {
-            levelText.text = "Level 1: The Labyrinth";
-            return;
-        }
-        if (this.CompareTag("lv2")) {
-            levelText.text = "Level 2: Misty Swamp";
-        }
+    public void UpdateLevel(string level) {
+        // if (grid.CompareTag("lv1")) {
+        //     levelText.text = "Level 1: Wasteland";
+        //     return;
+        // }
+        // if (grid.CompareTag("lv2")) {
+        //     levelText.text = "Level 2: The Labyrinth";
+        //     return;
+        // }
+        // if (grid.CompareTag("lv3")) {
+        //     levelText.text = "Level 3: Shadow Swamp";
+        // }
+        levelText.text = level;
     }
 }
