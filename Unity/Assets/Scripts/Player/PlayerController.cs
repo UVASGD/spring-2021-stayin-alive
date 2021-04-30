@@ -1,20 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Destructible
 {
-    public float movementSpeed = 1f;
+    public float movementSpeed = 5f;
     public Weapon mainWeapon;
 	public GameObject crosshairs;
+	// public GameObject enemy;
+	// public PlayerData playerData;
 
 	// Temporary, needs work
 	public Sprite forward;
+	public GameManager gm;
 	public Sprite right;
+	public bool reload = false;
+	public float damage = 10f;
+	public enum Characters
+    {
+		Hunter,
+        Archer,
+    }
+	public Characters character;
+
+	void Start(){
+		
+	}
+
+	public void SetChar(int charNum){
+		if (charNum == 1){
+			mainWeapon = GameObject.Find("Weapon").AddComponent<BaseGun>();
+			character = Characters.Hunter;
+		}
+		if (charNum == 2){
+			mainWeapon = GameObject.Find("Weapon").AddComponent<Bow>();
+			character = Characters.Archer;
+		}
+	}
+
+	void Update(){
+
+	}
 
 	public SpriteRenderer spriteRenderer;
 
-	public void ProcessInput(Vector2 movement, Vector2 aim, bool fire) {
+	public void ProcessInput(Vector2 movement, Vector2 aim, bool fire, bool reload) {
         transform.Translate(movement * movementSpeed * Time.deltaTime); // moves character in specified directions
 
 		Debug.DrawRay(transform.position, aim.normalized * mainWeapon.range, Color.red);
@@ -25,41 +56,54 @@ public class PlayerController : Destructible
 		} else {
 			crosshairs.transform.position = (Vector2) transform.position + (aim.normalized * mainWeapon.range);
 		}
-		
-		// fire weapon
-		if (fire) {
-			if(aim.x >= 0) {
-				spriteRenderer.sprite = right;
+
+		// Weapon control
+		mainWeapon.fireInput = fire;
+
+		if (fire && mainWeapon.currentState != Weapon.WeaponStates.Reloading) { 
+			spriteRenderer.sprite = right;
+			if (aim.x >= 0) {
 				spriteRenderer.flipX = false;
 			} else {
-				spriteRenderer.sprite = right;
 				spriteRenderer.flipX = true;
 			}
-            Fire(aim);
-		} 
-		
-		else {
+			mainWeapon.Fire(transform.position, aim);
+		}
+		else
+		{
 			spriteRenderer.sprite = forward;
 		}
+
+		if (reload)
+        {
+			mainWeapon.Reload();
+        }
+		
 	}
 
-    public void Fire(Vector2 direction) {
-        RaycastHit2D bullet = Physics2D.Raycast(transform.position, direction.normalized, mainWeapon.range);
+	public override void Die() {
+		throw new System.NotImplementedException();
+	}
 
-		if (bullet) {
-			Debug.Log(bullet.collider.gameObject.name);
-			Zombie zombie = bullet.collider.GetComponent<Zombie>();
-			if (zombie) {
-				zombie.TakeDamage();
-			}
+	public void Awake() {
+		DontDestroyOnLoad(this.gameObject);
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.CompareTag("1 to 2")) {
+			this.transform.position = new Vector3(-10, 0, 0);
+			gm.UpdateLevel("Level 2: The Labyrinth");
+			SceneManager.LoadScene("GrassLvl2");
 		}
-	}
-
-	public override void TakeDamage() {
-		throw new System.NotImplementedException();
-	}
-
-	public override void Heal() {
-		throw new System.NotImplementedException();
+		if (collision.CompareTag("2 to 3")) {
+			this.transform.position = new Vector3(-10, 0, 0);
+			gm.UpdateLevel("Level 3: Shadow Swamp");
+			SceneManager.LoadScene("GrassLvl3");
+		}
+		if (collision.CompareTag("3 to win")) {
+			Destroy(this);
+			gm.isActive = false;
+			SceneManager.LoadScene("Victory");
+		}
 	}
 }
