@@ -18,6 +18,7 @@ public class CameraFollow : MonoBehaviour {
 
     private void Start() {
         // initialize camera position and rotation
+        target = GameObject.Find("Player").GetComponent<Transform>();
         transform.position = target.transform.position + offset;
         minbounds = boundBox.bounds.min;
         maxbounds = boundBox.bounds.max;

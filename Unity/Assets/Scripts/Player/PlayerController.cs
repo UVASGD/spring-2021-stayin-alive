@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Destructible
 {
@@ -24,21 +25,16 @@ public class PlayerController : Destructible
 	public Characters character;
 
 	void Start(){
-		// enemy = gameObject.Find("Enemy").GetComponent<Enemy>();
-		// playerData = GameObject.Find("Player").GetComponent<PlayerData>();
-		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+		
 	}
 
 	public void SetChar(int charNum){
 		if (charNum == 1){
 			mainWeapon = GameObject.Find("Weapon").AddComponent<BaseGun>();
-			//mainWeapon.gm = gm;
 			character = Characters.Hunter;
-			
 		}
 		if (charNum == 2){
 			mainWeapon = GameObject.Find("Weapon").AddComponent<Bow>();
-			//mainWeapon.gm = gm;
 			character = Characters.Archer;
 		}
 	}
@@ -87,5 +83,27 @@ public class PlayerController : Destructible
 
 	public override void Die() {
 		throw new System.NotImplementedException();
+	}
+
+	public void Awake() {
+		DontDestroyOnLoad(this.gameObject);
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.CompareTag("1 to 2")) {
+			this.transform.position = new Vector3(-10, 0, 0);
+			gm.UpdateLevel("Level 2: The Labyrinth");
+			SceneManager.LoadScene("GrassLvl2");
+		}
+		if (collision.CompareTag("2 to 3")) {
+			this.transform.position = new Vector3(-10, 0, 0);
+			gm.UpdateLevel("Level 3: Shadow Swamp");
+			SceneManager.LoadScene("GrassLvl3");
+		}
+		if (collision.CompareTag("3 to win")) {
+			Destroy(this);
+			gm.isActive = false;
+			SceneManager.LoadScene("Victory");
+		}
 	}
 }

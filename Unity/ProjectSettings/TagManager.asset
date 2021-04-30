@@ -8,6 +8,11 @@ TagManager:
   - 3 to win
   - lv1
   - lv2
+  - lv3
+  - 1 to 2
+  - BaseGun
+  - Bow
+  - InitialCam
   layers:
   - Default
   - TransparentFX
