@@ -191,7 +191,7 @@ MonoBehaviour:
   character: 0
   clips:
   - {fileID: 8300000, guid: c9395283df312fe458216eb2af40c76d, type: 3}
-  - {fileID: 8300000, guid: d3069b92a2c580d44a90aa27c0137ba1, type: 3}
+  - {fileID: 8300000, guid: f29e5c06896f5224ab976fffd75162e8, type: 3}
   - {fileID: 8300000, guid: 44c3fe2d556153b4a830e9879ac40294, type: 3}
   player_sprite: {fileID: 0}
   spritesIdle:

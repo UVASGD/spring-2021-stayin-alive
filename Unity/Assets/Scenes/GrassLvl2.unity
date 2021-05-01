@@ -197,6 +197,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7304056760260828654, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.454
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363631579679910588, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.709
+      objectReference: {fileID: 0}
     - target: {fileID: 7036128747503802798, guid: 0506755809214d340816f8f724949233,
         type: 3}
       propertyPath: m_RootOrder
@@ -256,6 +266,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Zombie (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820384609760689692, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.696
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0506755809214d340816f8f724949233, type: 3}
@@ -1072,6 +1087,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7304056760260828654, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.702
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363631579679910588, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.557
+      objectReference: {fileID: 0}
     - target: {fileID: 7036128747503802798, guid: 0506755809214d340816f8f724949233,
         type: 3}
       propertyPath: m_RootOrder
@@ -1132,6 +1157,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 7820384609760689692, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.684
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0506755809214d340816f8f724949233, type: 3}
 --- !u!1001 &1054296973
@@ -1141,6 +1171,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7304056760260828654, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.678
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363631579679910588, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.672
+      objectReference: {fileID: 0}
     - target: {fileID: 7036128747503802798, guid: 0506755809214d340816f8f724949233,
         type: 3}
       propertyPath: m_RootOrder
@@ -1200,6 +1240,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Zombie (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820384609760689692, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.551
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0506755809214d340816f8f724949233, type: 3}

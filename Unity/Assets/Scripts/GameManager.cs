@@ -116,7 +116,22 @@ public class GameManager : MonoBehaviour
     }
 
     private Vector3 GenerateSpawnPos() {
-        return player.transform.position + (new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f,1f), 0f).normalized) * Random.Range(4f, 8f);
+        Collider[] hitColliders;
+        Vector3 location;
+        do{
+            location = player.transform.position + (new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f,1f), 0f).normalized) * Random.Range(4f, 8f);
+            hitColliders = Physics.OverlapSphere(location, 1f);
+            
+            Debug.Log(hitColliders.Length);
+            if(hitColliders.Length>0){
+                Debug.Log(hitColliders[0].ToString());
+            }
+        } while(hitColliders.Length > 0);
+        
+        return location;
+
+        
+        
         /*
         float spawnPosX = Random.Range(-26, 17);
         float spawnPosY = Random.Range(-7, 30);
