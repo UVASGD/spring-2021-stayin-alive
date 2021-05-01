@@ -9,14 +9,28 @@ public class Bullet : MonoBehaviour
     private Weapon mainWeapon;
     private GameObject player;
     public Vector2 start;
+    public Sprite[] typesOfBullets;
+    public SpriteRenderer bullet_sprite;
+    // public GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
+        bullet_sprite.gameObject.GetComponent<SpriteRenderer>();
         mainWeapon = GameObject.Find("Weapon").GetComponent<Weapon>();
         player = GameObject.Find("Player");
         rb = this.GetComponent<Rigidbody2D>();
+        // SetBullet();
     }
+
+    // void SetBullet() {
+    //     if (gm.playerIndex == 1) {
+    //         bullet_sprite.sprite = typesOfBullets[0];
+    //     }
+    //     else if (gm.playerIndex == 2) {
+    //         bullet_sprite.sprite = typesOfBullets[1];
+    //     }
+    // }
 
     // Update is called once per frame
     void Update()

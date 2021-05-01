@@ -15,7 +15,9 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
     const float startingRange = 1;
     const float startingDamage = 10;
 
-
+    public override void SetBullet() {
+        bulletPrefab = GameObject.Find("Weapon").GetComponent<BulletHolder>().bulletPrefab[1];
+    }
 
     void Start()
     {
