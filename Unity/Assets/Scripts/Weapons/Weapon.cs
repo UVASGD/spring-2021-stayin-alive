@@ -101,7 +101,7 @@ public class Weapon : MonoBehaviour
             source[1].Play();
             yield return new WaitForSeconds(reloadTime);
 
-            totalAmmo -= maxAmmo - currentAmmo;
+            //totalAmmo -= maxAmmo - currentAmmo;
             currentAmmo = maxAmmo;
             if (totalAmmo < 0)
             {

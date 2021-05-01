@@ -23,6 +23,7 @@ public class PlayerController : Destructible
         Archer,
     }
 	public Characters character;
+	public AudioClip[] clips = new AudioClip[3]; //[0-1] pain, [2] death
 	// public Sprite archerIdle;
 	// public Sprite archerShoot;
 	public SpriteRenderer player_sprite;
@@ -111,6 +112,7 @@ public class PlayerController : Destructible
     {
         this.hitPoints -= amount;
 		gm.UpdateHealth(hitPoints);
+		AudioSource.PlayClipAtPoint(clips[Random.Range(0,2)], transform.position);
         if (hitPoints <= 0)
         {
             Die();
@@ -120,10 +122,12 @@ public class PlayerController : Destructible
 	public override void TakeDamage()
     {
 		gm.UpdateHealth(0);
+		AudioSource.PlayClipAtPoint(clips[Random.Range(0,2)], transform.position);
 		Die();
     }
 
 	public override void Die() {
+		AudioSource.PlayClipAtPoint(clips[2], transform.position);
 		gm.GameOver();
 	}
 
@@ -133,19 +137,19 @@ public class PlayerController : Destructible
 
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.CompareTag("1 to 2")) {
-			this.transform.position = new Vector3(-10, 0, 0);
+			this.transform.position = new Vector3(-10, 0, -1);
 			gm.UpdateLevel("Level 2: The Labyrinth");
 			SceneManager.LoadScene("GrassLvl2");
 		}
 		if (collision.CompareTag("2 to 3")) {
-			this.transform.position = new Vector3(-10, 0, 0);
+			this.transform.position = new Vector3(-10, 0, -1);
 			gm.UpdateLevel("Level 3: Shadow Swamp");
 			SceneManager.LoadScene("GrassLvl3");
 		}
 		if (collision.CompareTag("3 to win")) {
-			Destroy(gameObject);
 			gm.isActive = false;
 			SceneManager.LoadScene("Victory");
+			Destroy(gameObject);			
 		}
 	}
 

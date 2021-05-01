@@ -30,7 +30,13 @@ public class CameraFollow : MonoBehaviour {
 
     private void Update() {
         // move camera with player, interpolating based on amount of smoothing
-        Vector3 newPosition = target.position + offset;
+        Vector3 newPosition;
+        if (target){
+            newPosition = target.position + offset;
+        } else {
+            newPosition = transform.position;
+        }
+        
         transform.position = Vector3.Lerp(transform.position, newPosition, smoothingSpeed);
 
         float clampedX = Mathf.Clamp(transform.position.x, minbounds.x+halfWidth, maxbounds.x - halfWidth);

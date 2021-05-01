@@ -7,7 +7,7 @@ public class Zombie : Enemy
 	void Start()
 	{
 		speed = 1f;
-		aggroRange = 7f;
+		aggroRange = 10f;
     	meleeRange = 1.8f;
 		closeRange = 1.5f;
 		swingTimer = 2;
