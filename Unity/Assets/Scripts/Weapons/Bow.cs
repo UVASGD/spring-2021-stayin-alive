@@ -23,8 +23,8 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
     {
         range = startingRange;
         damage = startingDamage;               
-        reloadTime = 2;
-        maxAmmo = 3;
+        reloadTime = .01f;
+        maxAmmo = 10;
         currentAmmo = 3;
         totalAmmo = 30;
         bulletsPerSecond = 1;
