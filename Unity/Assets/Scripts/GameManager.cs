@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Method for showing gameover UI
-    public void Gameover() {
+    public void GameOver() {
         isActive = false;
         restartButton.gameObject.SetActive(true);
         gameoverText.gameObject.SetActive(true);
@@ -90,11 +90,16 @@ public class GameManager : MonoBehaviour
         levelText.gameObject.SetActive(false);
         shotgun.gameObject.SetActive(false);
         bow.gameObject.SetActive(false);
+        restartButton.onClick.AddListener(RestartGame);
+
     }
 
     // Restarts the game
     public void RestartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Destroy(player.gameObject);
+        SceneManager.LoadScene("GrassLvl1");
+        restartButton.gameObject.SetActive(false);
+        gameoverText.gameObject.SetActive(false);
     }
 
     // Spawn Enemies
@@ -123,6 +128,14 @@ public class GameManager : MonoBehaviour
             return;
         }
         ammoText.text = "Ammo: " + ammo;
+    }
+
+    public void UpdateHealth(float health) {
+        if (health <= 0){
+            healthBar.value = 0f;
+            return;
+        }
+        healthBar.value = health;
     }
 
     public void UpdateLevel(string level) {

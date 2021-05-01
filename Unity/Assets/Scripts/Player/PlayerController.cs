@@ -107,8 +107,24 @@ public class PlayerController : Destructible
 		
 	}
 
+	public override void TakeDamage(float amount)
+    {
+        this.hitPoints -= amount;
+		gm.UpdateHealth(hitPoints);
+        if (hitPoints <= 0)
+        {
+            Die();
+        }
+    }
+
+	public override void TakeDamage()
+    {
+		gm.UpdateHealth(0);
+		Die();
+    }
+
 	public override void Die() {
-		throw new System.NotImplementedException();
+		gm.GameOver();
 	}
 
 	public void Awake() {
@@ -127,9 +143,10 @@ public class PlayerController : Destructible
 			SceneManager.LoadScene("GrassLvl3");
 		}
 		if (collision.CompareTag("3 to win")) {
-			Destroy(this);
+			Destroy(gameObject);
 			gm.isActive = false;
 			SceneManager.LoadScene("Victory");
 		}
 	}
+
 }
