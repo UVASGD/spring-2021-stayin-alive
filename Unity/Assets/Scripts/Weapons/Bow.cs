@@ -69,6 +69,11 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
                 //create bullet
                 GameObject a = Instantiate(bulletPrefab) as GameObject;
                 a.transform.position = start;
+                float angle = Vector2.Angle(aim, new Vector2(1f,0f));
+                if (aim.y <= 0){
+                    angle = -angle;
+                }
+                a.transform.Rotate(0,0, angle);
                 a.GetComponent<Rigidbody2D>().velocity = aim.normalized * projectileSpeed;
 
                 if (hit){
