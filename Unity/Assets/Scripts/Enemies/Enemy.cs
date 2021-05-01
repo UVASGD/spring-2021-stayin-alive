@@ -32,7 +32,7 @@ public class Enemy : Destructible
         player = GameObject.Find("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         source = this.gameObject.GetComponents<AudioSource>();
-        source[Random.Range(0,3)].Play();
+        //source[Random.Range(0,3)].Play();
         //AudioSource.PlayClipAtPoint(clips[Random.Range(4,6)], transform.position);
         enemyRb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }

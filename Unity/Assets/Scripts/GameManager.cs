@@ -114,7 +114,9 @@ public class GameManager : MonoBehaviour
 
     public void SpawnWave() {
         int index = Random.Range(0, enemy.Length);
-        Instantiate(enemy[index], GenerateSpawnPos(), enemy[index].transform.rotation);
+        GameObject a = Instantiate(enemy[index], GenerateSpawnPos(), enemy[index].transform.rotation);
+        a.GetComponent<Enemy>().source[Random.Range(0,3)].Play();
+
     }
 
     private Vector3 GenerateSpawnPos() {
