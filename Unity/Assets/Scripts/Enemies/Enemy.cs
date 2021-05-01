@@ -16,8 +16,8 @@ public class Enemy : Destructible
     private Rigidbody2D enemyRb;
     public GameObject player;
     public GameManager gm;
-    public AudioClip[] clips = new AudioClip[9]; //[0-3] are attacks, [4-6] is spawn noises, [7-8] are death noises 
-
+    public AudioClip[] clips = new AudioClip[6]; //[0-3] are attacks, [4-5] are death noises 
+    public AudioSource[] source; //[0-2 are creation noises]
 
     //private float pathFindingTimer;
     //private int currentPathIndex;
@@ -31,9 +31,9 @@ public class Enemy : Destructible
         enemyRb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        //source = this.gameObject.GetComponents<AudioSource>();
-        //source[Random.Range(4,7)].Play();
-        AudioSource.PlayClipAtPoint(clips[Random.Range(4,7)], transform.position);
+        source = this.gameObject.GetComponents<AudioSource>();
+        source[Random.Range(0,3)].Play();
+        //AudioSource.PlayClipAtPoint(clips[Random.Range(4,6)], transform.position);
         enemyRb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
@@ -81,7 +81,7 @@ public class Enemy : Destructible
 
     public override void Die(){
         //source[Random.Range(7,9)].Play();
-        AudioSource.PlayClipAtPoint(clips[Random.Range(7,9)], transform.position);
+        AudioSource.PlayClipAtPoint(clips[Random.Range(4,6)], transform.position);
         Destroy(gameObject);
     }
 }
