@@ -144,6 +144,10 @@ public class GameManager : MonoBehaviour
             ammoText.text = "Reloading...";
             return;
         }
+        if (ammo == -2){
+            ammoText.text = "Ammo: ∞";
+            return;
+        }
         ammoText.text = "Ammo: " + ammo;
     }
 
