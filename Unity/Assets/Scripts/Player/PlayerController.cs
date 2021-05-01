@@ -35,19 +35,6 @@ public class PlayerController : Destructible
 		player_sprite.gameObject.GetComponent<SpriteRenderer>();
 	}
 
-	// public void ChangeSprite(int i) {
-    //     // Debug.Log("In function");
-	// 	// player_sprite.sprite = gunman;
-    //     if (i == 1) {
-    //         // player_sprite.sprite = gunman;
-    //         Debug.Log("Change to player 1");
-    //     }
-    //     if (i == 2) {
-    //         // player_sprite.sprite = archer;
-    //         Debug.Log("Change to player 2");
-    //     }
-    // }
-
 	public void SetChar(int charNum){
 		if (charNum == 1){
 			mainWeapon = GameObject.Find("Weapon").AddComponent<BaseGun>();

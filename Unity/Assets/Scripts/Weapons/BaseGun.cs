@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BaseGun : Weapon
 {
+
+    public override void SetBullet() {
+        bulletPrefab = GameObject.Find("Weapon").GetComponent<BulletHolder>().bulletPrefab[0];
+    }
+
     public void Start()
     {
         range = 4;

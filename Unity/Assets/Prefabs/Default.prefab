@@ -79,15 +79,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 34a1c013dfcdfae4f91a00360f710b6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.83, y: 1.8}
+  m_Size: {x: 2, y: 0.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1411043739444618136
@@ -115,9 +115,18 @@ MonoBehaviour:
   reload: 0
   damage: 10
   character: 0
-  gunman: {fileID: 21300000, guid: e52da134d0494bc48b13e7fe14734f4c, type: 3}
-  archer: {fileID: 21300000, guid: 0bce24d6980fa7f41b2792b077f1d664, type: 3}
+  clips:
+  - {fileID: 8300000, guid: 661cc31a166bae3459a5181646252d04, type: 3}
+  - {fileID: 8300000, guid: 2cfd354269f842647ae561b822cb6878, type: 3}
+  - {fileID: 8300000, guid: 44c3fe2d556153b4a830e9879ac40294, type: 3}
   player_sprite: {fileID: 1411043739444618135}
+  spritesIdle:
+  - {fileID: 21300000, guid: e52da134d0494bc48b13e7fe14734f4c, type: 3}
+  - {fileID: 21300000, guid: 0bce24d6980fa7f41b2792b077f1d664, type: 3}
+  spritesShoot:
+  - {fileID: 21300000, guid: 2861c9d6cae01604cb0bece8acccad3d, type: 3}
+  - {fileID: 21300000, guid: 883dfd6aad6f84149aff6323a1ae2f7f, type: 3}
+  pos: {fileID: 1411043739444618134}
   spriteRenderer: {fileID: 1411043739444618135}
 --- !u!114 &1411043739444618137
 MonoBehaviour:
@@ -169,8 +178,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.83, y: 1.8}
-    newSize: {x: 2.83, y: 1.8}
+    oldSize: {x: 0.05, y: 0.05}
+    newSize: {x: 2, y: 0.72}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -630,8 +639,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703302639e7561d44ba0be7748f66a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8240696494704966152, guid: f88d74e46023c034ea07ce1469c24759,
-    type: 3}
+  bulletPrefab:
+  - {fileID: 8240696494704966152, guid: f88d74e46023c034ea07ce1469c24759, type: 3}
+  - {fileID: 2848187671994839157, guid: 84d9f94f746471d4cb908dc17bb52fbc, type: 3}
 --- !u!1 &1411043740852076081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,11 +1103,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 809390402554078345, guid: 250a222805de6224cb9174b31b340c00,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 809390402554078345, guid: 250a222805de6224cb9174b31b340c00,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2861c9d6cae01604cb0bece8acccad3d,
+        type: 3}
     - target: {fileID: 809390402607302815, guid: 250a222805de6224cb9174b31b340c00,
         type: 3}
       propertyPath: m_text
       value: 'Level 1: Wasteland'
       objectReference: {fileID: 0}
+    - target: {fileID: 809390402788474823, guid: 250a222805de6224cb9174b31b340c00,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 809390402788474823, guid: 250a222805de6224cb9174b31b340c00,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 883dfd6aad6f84149aff6323a1ae2f7f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250a222805de6224cb9174b31b340c00, type: 3}
 --- !u!114 &1778500216325309288 stripped
