@@ -23,19 +23,45 @@ public class PlayerController : Destructible
         Archer,
     }
 	public Characters character;
+	// public Sprite archerIdle;
+	// public Sprite archerShoot;
+	public SpriteRenderer player_sprite;
+    public Sprite[] spritesIdle;
+	public Sprite[] spritesShoot;
+	public Transform pos;
 
 	void Start(){
-		
+		player_sprite.gameObject.GetComponent<SpriteRenderer>();
 	}
+
+	// public void ChangeSprite(int i) {
+    //     // Debug.Log("In function");
+	// 	// player_sprite.sprite = gunman;
+    //     if (i == 1) {
+    //         // player_sprite.sprite = gunman;
+    //         Debug.Log("Change to player 1");
+    //     }
+    //     if (i == 2) {
+    //         // player_sprite.sprite = archer;
+    //         Debug.Log("Change to player 2");
+    //     }
+    // }
 
 	public void SetChar(int charNum){
 		if (charNum == 1){
 			mainWeapon = GameObject.Find("Weapon").AddComponent<BaseGun>();
 			character = Characters.Hunter;
+			player_sprite.sprite = spritesIdle[0];
+			forward = spritesIdle[0];
+			right = spritesShoot[0];
 		}
 		if (charNum == 2){
 			mainWeapon = GameObject.Find("Weapon").AddComponent<Bow>();
 			character = Characters.Archer;
+			player_sprite.sprite = spritesIdle[1];
+			forward = spritesIdle[1];
+			right = spritesShoot[1];
+			pos.localScale = new Vector3(0.2f,  0.2f, 0.2f);
 		}
 	}
 
