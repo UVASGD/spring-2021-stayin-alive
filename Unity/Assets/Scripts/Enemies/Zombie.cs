@@ -10,10 +10,10 @@ public class Zombie : Enemy
 		aggroRange = 10f;
     	meleeRange = 1.8f;
 		closeRange = 1.5f;
-		swingTimer = 2;
-		damage = 10;
-		hitPoints = 100;
-		maxHealth = 100;
+		swingTimer = 2f;
+		damage = 10f;
+		hitPoints = 100f;
+		maxHealth = 100f;
 	}
 
 }
