@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8090324418475451478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8090324418674424260}
@@ -115,7 +115,11 @@ MonoBehaviour:
   reload: 0
   damage: 10
   character: 0
-  grid: {fileID: 0}
+  clips:
+  - {fileID: 8300000, guid: 2cfd354269f842647ae561b822cb6878, type: 3}
+  - {fileID: 8300000, guid: 661cc31a166bae3459a5181646252d04, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   spriteRenderer: {fileID: 8090324418475451484}
 --- !u!114 &8090324418475451474
 MonoBehaviour:

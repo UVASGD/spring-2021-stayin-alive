@@ -16,6 +16,7 @@ public class Enemy : Destructible
     private Rigidbody2D enemyRb;
     public GameObject player;
     public GameManager gm;
+    public AudioClip[] clips = new AudioClip[9]; //[0-3] are attacks, [4-6] is spawn noises, [7-8] are death noises 
 
 
     //private float pathFindingTimer;
@@ -30,6 +31,10 @@ public class Enemy : Destructible
         enemyRb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //source = this.gameObject.GetComponents<AudioSource>();
+        //source[Random.Range(4,7)].Play();
+        AudioSource.PlayClipAtPoint(clips[Random.Range(4,7)], transform.position);
+        enemyRb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     // Update is called once per frame
@@ -58,7 +63,7 @@ public class Enemy : Destructible
         Vector2 targetPosition = new Vector2(target.transform.position.x, target.transform.position.y);
         if (Vector2.Distance(currentPosition, targetPosition) > closeRange){
             Vector2 moveDir = (targetPosition - currentPosition).normalized;
-            transform.position = new Vector3(currentPosition.x + moveDir.x * speed * Time.deltaTime, currentPosition.y + moveDir.y * speed * Time.deltaTime, 0);
+            transform.Translate(moveDir * speed * Time.deltaTime);
         } 
         if (Vector2.Distance(currentPosition, targetPosition) <= meleeRange) {
             Attack(target.GetComponent<Destructible>());
@@ -67,9 +72,17 @@ public class Enemy : Destructible
 
     private void Attack(Destructible target){
         if (lastSwing >= swingTimer){
+            //source[Random.Range(0,4)].PlayClipAtPoint();
+            AudioSource.PlayClipAtPoint(clips[Random.Range(0,4)], transform.position);
             target.TakeDamage(damage);
             lastSwing = 0;
         }
+    }
+
+    public override void Die(){
+        //source[Random.Range(7,9)].Play();
+        AudioSource.PlayClipAtPoint(clips[Random.Range(7,9)], transform.position);
+        Destroy(gameObject);
     }
 }
 

@@ -56,7 +56,7 @@ MonoBehaviour:
   pistol: {fileID: 0}
   isActive: 0
   enemy:
-  - {fileID: 2488792029829016820, guid: f95bfed1ce3a45340b38c996191ca083, type: 3}
-  - {fileID: 1429660541355811961, guid: 92bfddf5e8f4ff0428c3a8c831762ca6, type: 3}
+  - {fileID: 7036128747503802802, guid: 0506755809214d340816f8f724949233, type: 3}
+  - {fileID: 7036128747503802802, guid: 0506755809214d340816f8f724949233, type: 3}
   spawnDelay: 4
   player: {fileID: 0}

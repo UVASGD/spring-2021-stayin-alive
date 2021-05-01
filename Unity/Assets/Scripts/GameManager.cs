@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public bool isActive = false;
     public GameObject[] enemy;
     // public PlayerData playerData;
-    public float spawnDelay = 0.05f;
+    public int spawnDelay = 1;
     public PlayerController player;
 
     // Start is called before the first frame update
@@ -105,10 +105,13 @@ public class GameManager : MonoBehaviour
     }
 
     private Vector3 GenerateSpawnPos() {
+        return player.transform.position + (new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f,1f), 0f).normalized) * Random.Range(4f, 8f);
+        /*
         float spawnPosX = Random.Range(-26, 17);
         float spawnPosY = Random.Range(-7, 30);
         Vector3 randomPos = new Vector3(spawnPosX, spawnPosY, 0);
         return randomPos;
+        */
     }
 
     public void UpdateAmmo(int ammo) {
