@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     // public PlayerData playerData;
     public int spawnDelay = 1;
     public PlayerController player;
-    // public GameObject changePlayer;
+    public int playerIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         // player.ChangeSprite(1);
         StartGame();
         player.SetChar(1);
+        playerIndex = 1;
         shotgun.gameObject.SetActive(true);
 
     }
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
         // player.ChangeSprite(2);
         StartGame();
         player.SetChar(2);
+        playerIndex = 2;
         bow.gameObject.SetActive(true);
     }
 
