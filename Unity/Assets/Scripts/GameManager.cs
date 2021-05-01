@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public bool isActive = false;
     public GameObject[] enemy;
     // public PlayerData playerData;
-    public int spawnDelay = 1;
+    public int spawnDelay = 2;
     public PlayerController player;
     public int playerIndex;
 
@@ -118,7 +118,17 @@ public class GameManager : MonoBehaviour
     }
 
     private Vector3 GenerateSpawnPos() {
-        return player.transform.position + (new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f,1f), 0f).normalized) * Random.Range(4f, 8f);
+        Collider2D hit;
+        Vector3 location;
+        do{
+            location = player.transform.position + (new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f,1f), 0f).normalized) * Random.Range(4f, 8f);
+            hit = Physics2D.OverlapCircle(location, 1f);
+        } while(hit); //forces re-roll of location if would spawn zombie in collision
+        
+        return location;
+
+        
+        
         /*
         float spawnPosX = Random.Range(-26, 17);
         float spawnPosY = Random.Range(-7, 30);

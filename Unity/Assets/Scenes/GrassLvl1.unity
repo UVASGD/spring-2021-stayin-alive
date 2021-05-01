@@ -224,6 +224,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7304056760260828654, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.611
+      objectReference: {fileID: 0}
     - target: {fileID: -3327488085307151492, guid: 0506755809214d340816f8f724949233,
         type: 3}
       propertyPath: m_Mass
@@ -239,6 +244,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8090324417864029555}
+    - target: {fileID: 2363631579679910588, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.83
+      objectReference: {fileID: 0}
     - target: {fileID: 7036128747503802796, guid: 0506755809214d340816f8f724949233,
         type: 3}
       propertyPath: gm
@@ -333,6 +343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820384609760689692, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.642
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0506755809214d340816f8f724949233, type: 3}
@@ -5227,6 +5242,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7304056760260828654, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.678
+      objectReference: {fileID: 0}
     - target: {fileID: -3327488085307151492, guid: 0506755809214d340816f8f724949233,
         type: 3}
       propertyPath: m_Mass
@@ -5236,6 +5256,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363631579679910588, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.727
       objectReference: {fileID: 0}
     - target: {fileID: 7036128747503802798, guid: 0506755809214d340816f8f724949233,
         type: 3}
@@ -5296,6 +5321,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Zombie (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820384609760689692, guid: 0506755809214d340816f8f724949233,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.684
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0506755809214d340816f8f724949233, type: 3}
@@ -5490,8 +5520,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8898289851813991527, guid: ceac457548b8e2b43898b57e3c91f69c,
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
         type: 3}
+      propertyPath: pos
+      value: 
+      objectReference: {fileID: 8090324417864029562}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f29e5c06896f5224ab976fffd75162e8, type: 3}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: c9395283df312fe458216eb2af40c76d, type: 3}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 44c3fe2d556153b4a830e9879ac40294, type: 3}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: spritesIdle.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377, type: 3}
       propertyPath: m_SizeDelta.y
       value: 400
       objectReference: {fileID: 0}
