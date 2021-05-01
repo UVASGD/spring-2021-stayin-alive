@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI levelText;
     public Slider healthBar;
-    public Image pistol;
+    public Image shotgun;
+    public Image bow;
 
     // Non UI Fields
     public bool isActive = false;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     // public PlayerData playerData;
     public int spawnDelay = 1;
     public PlayerController player;
+    // public GameObject changePlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,9 @@ public class GameManager : MonoBehaviour
         startButton.gameObject.GetComponent<Button>();
         startButton.onClick.AddListener(ChooseCharacter);
         healthBar.gameObject.GetComponent<Slider>();
-        pistol.gameObject.GetComponent<Image>();
+        shotgun.gameObject.GetComponent<Image>();
+        bow.gameObject.SetActive(false);
+        // player_sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -52,13 +56,18 @@ public class GameManager : MonoBehaviour
     }
 
     public void Char1Selected() {
+        // player.ChangeSprite(1);
         StartGame();
         player.SetChar(1);
+        shotgun.gameObject.SetActive(true);
+
     }
 
     public void Char2Selected() {
+        // player.ChangeSprite(2);
         StartGame();
         player.SetChar(2);
+        bow.gameObject.SetActive(true);
     }
 
     // Start the game
@@ -68,7 +77,7 @@ public class GameManager : MonoBehaviour
         ammoText.gameObject.SetActive(true);
         healthBar.gameObject.SetActive(true);
         levelText.gameObject.SetActive(true);
-        pistol.gameObject.SetActive(true);
+        // pistol.gameObject.SetActive(true);
         StartCoroutine(Spawn());
     }
 
@@ -79,8 +88,10 @@ public class GameManager : MonoBehaviour
         gameoverText.gameObject.SetActive(true);
         ammoText.gameObject.SetActive(false);
         levelText.gameObject.SetActive(false);
-        pistol.gameObject.SetActive(false);
+        shotgun.gameObject.SetActive(false);
+        bow.gameObject.SetActive(false);
         restartButton.onClick.AddListener(RestartGame);
+
     }
 
     // Restarts the game
