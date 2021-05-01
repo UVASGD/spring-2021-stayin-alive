@@ -5485,16 +5485,76 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: pos
+      value: 
+      objectReference: {fileID: 8090324417864029562}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 661cc31a166bae3459a5181646252d04, type: 3}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2cfd354269f842647ae561b822cb6878, type: 3}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 44c3fe2d556153b4a830e9879ac40294, type: 3}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: spritesIdle.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: spritesShoot.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: spritesIdle.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: e52da134d0494bc48b13e7fe14734f4c,
+        type: 3}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: spritesIdle.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0bce24d6980fa7f41b2792b077f1d664,
+        type: 3}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: spritesShoot.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2861c9d6cae01604cb0bece8acccad3d,
+        type: 3}
+    - target: {fileID: 1411043739444618136, guid: 24acbe68a4b94284387c4d67ba6ae377,
+        type: 3}
+      propertyPath: spritesShoot.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 883dfd6aad6f84149aff6323a1ae2f7f,
+        type: 3}
     - target: {fileID: 1411043739444618141, guid: 24acbe68a4b94284387c4d67ba6ae377,
         type: 3}
       propertyPath: m_Name
-      value: Default
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24acbe68a4b94284387c4d67ba6ae377, type: 3}
 --- !u!1 &8090324417864029555 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1411043739444618141, guid: 24acbe68a4b94284387c4d67ba6ae377,
+    type: 3}
+  m_PrefabInstance: {fileID: 7193255755419940590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8090324417864029562 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1411043739444618134, guid: 24acbe68a4b94284387c4d67ba6ae377,
     type: 3}
   m_PrefabInstance: {fileID: 7193255755419940590}
   m_PrefabAsset: {fileID: 0}

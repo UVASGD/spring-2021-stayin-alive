@@ -192,8 +192,15 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 2cfd354269f842647ae561b822cb6878, type: 3}
   - {fileID: 8300000, guid: 661cc31a166bae3459a5181646252d04, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 44c3fe2d556153b4a830e9879ac40294, type: 3}
+  player_sprite: {fileID: 0}
+  spritesIdle:
+  - {fileID: 21300000, guid: e52da134d0494bc48b13e7fe14734f4c, type: 3}
+  - {fileID: 21300000, guid: 0bce24d6980fa7f41b2792b077f1d664, type: 3}
+  spritesShoot:
+  - {fileID: 21300000, guid: 2861c9d6cae01604cb0bece8acccad3d, type: 3}
+  - {fileID: 21300000, guid: 883dfd6aad6f84149aff6323a1ae2f7f, type: 3}
+  pos: {fileID: 8090324418475451485}
   spriteRenderer: {fileID: 8090324418475451484}
 --- !u!114 &8090324418475451474
 MonoBehaviour:
