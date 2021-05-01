@@ -31,8 +31,19 @@ public class Weapon : MonoBehaviour
         //for some reason I (maybe) can't assign gm here but it gets assigned when PlayerController creates the weapon
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         source = GameObject.Find("Weapon").GetComponents<AudioSource>();
-        bulletPrefab = GameObject.Find("Weapon").GetComponent<BulletHolder>().bulletPrefab;
+        SetBullet();
+        // bulletPrefab = GameObject.Find("Weapon").GetComponent<BulletHolder>().bulletPrefab[1];
+        // if (gm.playerIndex == 1) {
+        //     bulletPrefab = GameObject.Find("Weapon").GetComponent<BulletHolder>().bulletPrefab[0];
+        // }
+        // else if (gm.playerIndex == 2) {
+        //     bulletPrefab = GameObject.Find("Weapon").GetComponent<BulletHolder>().bulletPrefab[1];
+        // }
         //NOTE: include gm.UpdateAmmo(currentAmmo); at the end of each weaponType's start function since its wonky being here
+    }
+
+    public virtual void SetBullet() {
+        
     }
 
     //TODO: change from timers/delays to a timestamp wherein it will adjust.
@@ -101,7 +112,7 @@ public class Weapon : MonoBehaviour
             source[1].Play();
             yield return new WaitForSeconds(reloadTime);
 
-            totalAmmo -= maxAmmo - currentAmmo;
+            //totalAmmo -= maxAmmo - currentAmmo;
             currentAmmo = maxAmmo;
             if (totalAmmo < 0)
             {

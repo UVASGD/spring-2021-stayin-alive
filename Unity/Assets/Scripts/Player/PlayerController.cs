@@ -23,19 +23,33 @@ public class PlayerController : Destructible
         Archer,
     }
 	public Characters character;
+	public AudioClip[] clips = new AudioClip[3]; //[0-1] pain, [2] death
+	// public Sprite archerIdle;
+	// public Sprite archerShoot;
+	public SpriteRenderer player_sprite;
+    public Sprite[] spritesIdle;
+	public Sprite[] spritesShoot;
+	public Transform pos;
 
 	void Start(){
-		
+		player_sprite.gameObject.GetComponent<SpriteRenderer>();
 	}
 
 	public void SetChar(int charNum){
 		if (charNum == 1){
 			mainWeapon = GameObject.Find("Weapon").AddComponent<BaseGun>();
 			character = Characters.Hunter;
+			player_sprite.sprite = spritesIdle[0];
+			forward = spritesIdle[0];
+			right = spritesShoot[0];
 		}
 		if (charNum == 2){
 			mainWeapon = GameObject.Find("Weapon").AddComponent<Bow>();
 			character = Characters.Archer;
+			player_sprite.sprite = spritesIdle[1];
+			forward = spritesIdle[1];
+			right = spritesShoot[1];
+			// pos.localScale = new Vector3(0.2f,  0.2f, 0.2f);
 		}
 	}
 
@@ -81,8 +95,27 @@ public class PlayerController : Destructible
 		
 	}
 
+	public override void TakeDamage(float amount)
+    {
+        this.hitPoints -= amount;
+		gm.UpdateHealth(hitPoints);
+		AudioSource.PlayClipAtPoint(clips[Random.Range(0,2)], transform.position);
+        if (hitPoints <= 0)
+        {
+            Die();
+        }
+    }
+
+	public override void TakeDamage()
+    {
+		gm.UpdateHealth(0);
+		AudioSource.PlayClipAtPoint(clips[Random.Range(0,2)], transform.position);
+		Die();
+    }
+
 	public override void Die() {
-		throw new System.NotImplementedException();
+		AudioSource.PlayClipAtPoint(clips[2], transform.position);
+		gm.GameOver();
 	}
 
 	public void Awake() {
@@ -91,19 +124,20 @@ public class PlayerController : Destructible
 
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.CompareTag("1 to 2")) {
-			this.transform.position = new Vector3(-10, 0, 0);
+			this.transform.position = new Vector3(-10, 0, -1);
 			gm.UpdateLevel("Level 2: The Labyrinth");
 			SceneManager.LoadScene("GrassLvl2");
 		}
 		if (collision.CompareTag("2 to 3")) {
-			this.transform.position = new Vector3(-10, 0, 0);
+			this.transform.position = new Vector3(-10, 0, -1);
 			gm.UpdateLevel("Level 3: Shadow Swamp");
 			SceneManager.LoadScene("GrassLvl3");
 		}
 		if (collision.CompareTag("3 to win")) {
-			Destroy(this);
 			gm.isActive = false;
 			SceneManager.LoadScene("Victory");
+			Destroy(gameObject);			
 		}
 	}
+
 }

@@ -7,6 +7,7 @@ public class Enemy : Destructible
     public float speed = .1f;
     public float aggroRange = 5f;
     public float meleeRange = 1.5f;
+    public float closeRange = .5f;
 
     public float damage;
     public float swingTimer;
@@ -15,7 +16,8 @@ public class Enemy : Destructible
     private Rigidbody2D enemyRb;
     public GameObject player;
     public GameManager gm;
-
+    public AudioClip[] clips = new AudioClip[6]; //[0-3] are attacks, [4-5] are death noises 
+    public AudioSource[] source; //[0-2 are creation noises]
 
     //private float pathFindingTimer;
     //private int currentPathIndex;
@@ -29,6 +31,10 @@ public class Enemy : Destructible
         enemyRb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        source = this.gameObject.GetComponents<AudioSource>();
+        //source[Random.Range(0,3)].Play();
+        //AudioSource.PlayClipAtPoint(clips[Random.Range(4,6)], transform.position);
+        enemyRb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     // Update is called once per frame
@@ -55,19 +61,28 @@ public class Enemy : Destructible
     private void MoveTowards(GameObject target){
         Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y);
         Vector2 targetPosition = new Vector2(target.transform.position.x, target.transform.position.y);
-        if (Vector2.Distance(currentPosition, targetPosition) > meleeRange){
+        if (Vector2.Distance(currentPosition, targetPosition) > closeRange){
             Vector2 moveDir = (targetPosition - currentPosition).normalized;
-            transform.position = new Vector3(currentPosition.x + moveDir.x * speed * Time.deltaTime, currentPosition.y + moveDir.y * speed * Time.deltaTime, 0);
-        } else{
+            transform.Translate(moveDir * speed * Time.deltaTime);
+        } 
+        if (Vector2.Distance(currentPosition, targetPosition) <= meleeRange) {
             Attack(target.GetComponent<Destructible>());
         }
     }
 
     private void Attack(Destructible target){
         if (lastSwing >= swingTimer){
+            //source[Random.Range(0,4)].PlayClipAtPoint();
+            AudioSource.PlayClipAtPoint(clips[Random.Range(0,4)], transform.position);
             target.TakeDamage(damage);
             lastSwing = 0;
         }
+    }
+
+    public override void Die(){
+        //source[Random.Range(7,9)].Play();
+        AudioSource.PlayClipAtPoint(clips[Random.Range(4,6)], transform.position);
+        Destroy(gameObject);
     }
 }
 

@@ -78,7 +78,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.05, y: 0.05}
+  m_Size: {x: 2, y: 0.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -119,6 +119,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 0
   start: {x: 0, y: 0}
+  typesOfBullets:
+  - {fileID: 21300000, guid: 34a1c013dfcdfae4f91a00360f710b6d, type: 3}
+  - {fileID: 21300000, guid: 142ab922108a5b349a8fce4c37cbeba9, type: 3}
+  bullet_sprite: {fileID: 5019066742997012058}
+  gm: {fileID: 0}
 --- !u!61 &-7576965323670163063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137,7 +142,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.05, y: 0.05}
-    newSize: {x: 0.05, y: 0.05}
+    newSize: {x: 2, y: 0.72}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

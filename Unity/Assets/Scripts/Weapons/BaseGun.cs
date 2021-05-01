@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class BaseGun : Weapon
 {
+
+    public override void SetBullet() {
+        bulletPrefab = GameObject.Find("Weapon").GetComponent<BulletHolder>().bulletPrefab[0];
+    }
+
     public void Start()
     {
-        range = 2;
+        range = 4;
         damage = 50;
         bulletsPerSecond = 1;
         reloadTime = 3;

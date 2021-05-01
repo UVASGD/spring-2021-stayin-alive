@@ -15,23 +15,25 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
     const float startingRange = 1;
     const float startingDamage = 10;
 
-
+    public override void SetBullet() {
+        bulletPrefab = GameObject.Find("Weapon").GetComponent<BulletHolder>().bulletPrefab[1];
+    }
 
     void Start()
     {
         range = startingRange;
         damage = startingDamage;               
-        reloadTime = 2;
-        maxAmmo = 3;
+        reloadTime = .01f;
+        maxAmmo = 10;
         currentAmmo = 3;
         totalAmmo = 30;
         bulletsPerSecond = 1;
         projectileSpeed = 15;
-        rangeIncrease = 2f;     //From here...
-        damageIncrease = 25f;
+        rangeIncrease = 2.67f;     //From here...
+        damageIncrease = 33.4f;
         maxDamage = 100;
         maxRange = 8;             //...To here, make sure "increase" vars divide "max" vars evenly
-        gm.UpdateAmmo(currentAmmo);
+        gm.UpdateAmmo(-2);
     }
 
     // Update is called once per frame
@@ -63,10 +65,15 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
                 currentAmmo -= 1;
                 source[2].Stop();
                 source[3].Play();
-                gm.UpdateAmmo(currentAmmo);
+                gm.UpdateAmmo(-2);
                 //create bullet
                 GameObject a = Instantiate(bulletPrefab) as GameObject;
                 a.transform.position = start;
+                float angle = Vector2.Angle(aim, new Vector2(1f,0f));
+                if (aim.y <= 0){
+                    angle = -angle;
+                }
+                a.transform.Rotate(0,0, angle);
                 a.GetComponent<Rigidbody2D>().velocity = aim.normalized * projectileSpeed;
 
                 if (hit){
@@ -109,6 +116,28 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
             Reload();
         }
 
+    }
+
+    public override IEnumerator ReloadTimings()
+    {
+        yield return new WaitUntil(() => currentState == WeaponStates.Ready);
+    
+        if (currentAmmo < maxAmmo && totalAmmo > 0)
+        {
+            currentState = WeaponStates.Reloading;
+            gm.UpdateAmmo(-2);
+            yield return new WaitForSeconds(reloadTime);
+
+            //totalAmmo -= maxAmmo - currentAmmo;
+            currentAmmo = maxAmmo;
+            if (totalAmmo < 0)
+            {
+                currentAmmo += totalAmmo;
+                totalAmmo = 0;
+            }
+            currentState = WeaponStates.Ready;
+            gm.UpdateAmmo(-2);
+        }
     }
 
 }
