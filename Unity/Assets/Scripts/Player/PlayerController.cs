@@ -62,7 +62,7 @@ public class PlayerController : Destructible
 			player_sprite.sprite = spritesIdle[1];
 			forward = spritesIdle[1];
 			right = spritesShoot[1];
-			pos.localScale = new Vector3(0.2f,  0.2f, 0.2f);
+			// pos.localScale = new Vector3(0.2f,  0.2f, 0.2f);
 		}
 	}
 
