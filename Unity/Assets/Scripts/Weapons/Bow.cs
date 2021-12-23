@@ -96,6 +96,7 @@ public class Bow : Weapon //Current implementation makes this only doable by mai
     public override void Fire(Vector2 start, Vector2 aim)
     {
         //this is a wonky method to get the player's location and aim vectors (as it only retrives when clicking to fire), but I think its best considering most other weapons (should) only need them in the Fire() function, but we can change when we get there
+        //Narrator voice: "good thing they never got there"
         this.start = start;
         this.aim = aim;                         
         if (currentState != WeaponStates.Ready || currentAmmo <= 0)
